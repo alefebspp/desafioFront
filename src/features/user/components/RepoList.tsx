@@ -26,7 +26,7 @@ export function RepoList({ repos, username }: RepoListProps) {
   }
 
   return (
-    <section className="mt-10" data-testid="repo-list">
+    <section className="mt-10 min-w-0" data-testid="repo-list">
       <div className="mb-6 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
         <h2 className="font-display text-xl font-bold text-cream">
           Repositórios
@@ -34,7 +34,7 @@ export function RepoList({ repos, username }: RepoListProps) {
         </h2>
         <RepoSortControls value={sortBy} onChange={setSortBy} />
       </div>
-      <ul className="grid auto-rows-fr gap-4 sm:grid-cols-2">
+      <ul className="grid min-w-0 auto-rows-fr gap-4 sm:grid-cols-2">
         {sortedRepos.map((repo) => (
           <RepoCard key={repo.id} repo={repo} username={username} />
         ))}

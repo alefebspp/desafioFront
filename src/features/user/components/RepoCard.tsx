@@ -8,13 +8,13 @@ type RepoCardProps = {
 
 export function RepoCard({ repo, username }: RepoCardProps) {
   return (
-    <li className="h-full">
+    <li className="h-full min-w-0">
       <Link
         to={`/users/${encodeURIComponent(username)}/repos/${encodeURIComponent(repo.name)}`}
-        className="group flex h-full flex-col rounded-sm border border-border bg-surface p-4 transition-all duration-200 hover:border-lime/50 hover:bg-surface-raised"
+        className="group flex h-full min-w-0 flex-col overflow-hidden rounded-sm border border-border bg-surface p-4 transition-all duration-200 hover:border-lime/50 hover:bg-surface-raised"
         data-testid="repo-card"
       >
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex min-w-0 items-start justify-between gap-3">
           <h3 className="min-w-0 flex-1 truncate font-display text-lg font-semibold text-cream group-hover:text-lime">
             {repo.name}
           </h3>
@@ -22,12 +22,17 @@ export function RepoCard({ repo, username }: RepoCardProps) {
             ★ {repo.stargazers_count.toLocaleString('pt-BR')}
           </span>
         </div>
-        <p className="mt-2 min-h-5 truncate text-sm text-muted" title={repo.description ?? undefined}>
+        <p
+          className="mt-2 min-h-5 min-w-0 truncate text-sm text-muted"
+          title={repo.description ?? undefined}
+        >
           {repo.description ?? ''}
         </p>
-        <div className="mt-auto flex flex-wrap gap-3 pt-3 text-xs text-muted">
+        <div className="mt-auto flex min-w-0 flex-wrap gap-3 pt-3 text-xs text-muted">
           {repo.language && (
-            <span className="rounded-sm border border-border px-2 py-0.5">{repo.language}</span>
+            <span className="max-w-full truncate rounded-sm border border-border px-2 py-0.5">
+              {repo.language}
+            </span>
           )}
           <span>{repo.forks_count} forks</span>
         </div>
