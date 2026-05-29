@@ -2,6 +2,8 @@
 
 Aplicação client-side que consulta a [API do GitHub](https://docs.github.com/en/rest) e exibe os repositórios mais populares de um usuário, com perfil, ordenação e detalhes de cada repositório.
 
+**URL da aplicação**: https://git-scope.netlify.app
+
 ## Funcionalidades
 
 - Busca por usuário do GitHub
@@ -79,10 +81,10 @@ src/
 
 ## Rotas
 
-| Rota | Descrição |
-|------|-----------|
-| `/` | Busca de usuário |
-| `/users/:username` | Perfil e repositórios |
+| Rota                               | Descrição               |
+| ---------------------------------- | ----------------------- |
+| `/`                                | Busca de usuário        |
+| `/users/:username`                 | Perfil e repositórios   |
 | `/users/:username/repos/:repoName` | Detalhes do repositório |
 
 ## APIs consumidas
@@ -93,7 +95,7 @@ src/
 
 ## Demo
 
-Após o deploy (Vercel, Netlify, Surge, etc.), inclua a URL aqui.
+URL da aplicação: https://git-scope.netlify.app
 
 ---
 
