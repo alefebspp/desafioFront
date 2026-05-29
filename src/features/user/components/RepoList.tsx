@@ -34,7 +34,7 @@ export function RepoList({ repos, username }: RepoListProps) {
         </h2>
         <RepoSortControls value={sortBy} onChange={setSortBy} />
       </div>
-      <ul className="grid gap-4 sm:grid-cols-2">
+      <ul className="grid auto-rows-fr gap-4 sm:grid-cols-2">
         {sortedRepos.map((repo) => (
           <RepoCard key={repo.id} repo={repo} username={username} />
         ))}
