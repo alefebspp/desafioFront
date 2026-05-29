@@ -4,16 +4,11 @@ import { LoadingSpinner } from '../../../components/ui/LoadingSpinner'
 import { PageLayout } from '../../../components/ui/PageLayout'
 import { RepoList } from '../components/RepoList'
 import { UserProfile } from '../components/UserProfile'
-import { useGithubRepos } from '../hooks/useGithubRepos'
-import { useGithubUser } from '../hooks/useGithubUser'
+import { useUserPageData } from '../hooks/useUserPageData'
 
 export function UserPage() {
   const { username = '' } = useParams<{ username: string }>()
-  const { user, isLoading: userLoading, error: userError } = useGithubUser(username)
-  const { repos, isLoading: reposLoading, error: reposError } = useGithubRepos(username)
-
-  const isLoading = userLoading || reposLoading
-  const error = userError ?? reposError
+  const { user, repos, isLoading, userError, reposError } = useUserPageData(username)
 
   return (
     <PageLayout>
@@ -25,9 +20,9 @@ export function UserPage() {
 
       {isLoading && <LoadingSpinner label="Buscando perfil e repositórios..." />}
 
-      {error && !isLoading && <ErrorMessage message={error} />}
+      {userError && !isLoading && <ErrorMessage message={userError} />}
 
-      {user && !isLoading && !error && (
+      {user && !isLoading && !userError && (
         <div className="animate-rise">
           <UserProfile user={user} />
           {reposError ? (
